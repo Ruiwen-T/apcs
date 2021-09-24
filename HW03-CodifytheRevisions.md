@@ -10,12 +10,12 @@
 1. Binary is a numerical system in base 2. In binary, 1 indicates on or true, and 0 indicates off or false. 
    We care because binary is often used by computers to store information.
 
-2. Let the binary number we receive be *n*. Keep track of a *sum* value that begins at 0 and an *exp* value that also begins at 0. 
-  **Step 1:** Take the rightmost digit of *n*, multiply it by 2^*exp*, and add this value to *sum*. 
-  **Step 2:** Add 1 to *exp*. 
-  **Step 3:** Remove the rightmost digit of *n*. 
-  **Step 4:** Repeat steps 1 to 3 until *n* no longer has any non-zero digits.
-  **Step 5:** *sum* is the converted decimal number.
+2. Let the binary number we receive be *n*. Keep track of a *sum* value that begins at 0 and an *exp* value that also begins at 0. <br>
+  **Step 1:** Take the rightmost digit of *n*, multiply it by 2^*exp*, and add this value to *sum*. <br>
+  **Step 2:** Add 1 to *exp*. <br>
+  **Step 3:** Remove the rightmost digit of *n*. <br>
+  **Step 4:** Repeat steps 1 to 3 until *n* no longer has any non-zero digits. <br>
+  **Step 5:** *sum* is the converted decimal number. <br>
 
 3. Let the decimal number we receive be *m*. Keep track of a *bin* value that will store the converted binary number.
   **Step 1:** Find the greatest power of 2 less than or equal to *m*. This can be done by keeping track of an *exp* value that begins at 0. 
