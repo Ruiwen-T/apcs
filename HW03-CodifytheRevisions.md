@@ -9,5 +9,23 @@
   
 1. Binary is a numerical system in base 2. In binary, 1 indicates on or true, and 0 indicates off or false. 
    We care because binary is often used by computers to store information.
- 
 
+2. Let the binary number we receive be *n*. Keep track of a *sum* value that begins at 0 and an *exp* value that also begins at 0. 
+  **Step 1:** Take the rightmost digit of *n*, multiply it by 2^*exp*, and add this value to *sum*. 
+  **Step 2:** Add 1 to *exp*. 
+  **Step 3:** Remove the rightmost digit of *n*. 
+  **Step 4:** Repeat steps 1 to 3 until *n* no longer has any non-zero digits.
+  **Step 5:** *sum* is the converted decimal number.
+
+3. Let the decimal number we receive be *m*. Keep track of a *bin* value that will store the converted binary number.
+  **Step 1:** Find the greatest power of 2 less than or equal to *m*. This can be done by keeping track of an *exp* value that begins at 0. 
+    **Step 1.1:** If 2^*exp* is less than or equal to *m*, add 1 to *exp* and repeat **Step 1.1**. Otherwise, we have determined that 2^(*exp*-1) is the greatest power of 2 less than or equal to *m*.
+  **Step 2:** Add 10^(*exp*-1) to *bin* (treat *bin* as a base-10 number during this step).
+  **Step 3:** Subtract 2^(*exp*-1) from *m*. 
+  **Step 4:** Subtract 1 from *exp*. If *exp* is equal to 0, skip the rest of the steps, and *bin* is the converted binary number.
+  **Step 5:** If 2^(*exp*-1) is less than or equal to *m*, repeat steps 2 to 5. Otherwise, repeat steps 4 and 5.
+  
+  **Observations:**
+  - bolding, italicizing in Markdown are extremely helpful (particularly, bolding specific steps and italicizing values)
+  - the .md file extension allows the use of Markdown
+  - breaking into steps and providing examples significantly aid in improving clarity
