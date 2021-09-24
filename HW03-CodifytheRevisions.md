@@ -19,7 +19,7 @@
 
 3. Let the decimal number we receive be *m*. Keep track of a *bin* value, beginning at 0. <br>
   **Step 1:** Find the greatest power of 2 less than or equal to *m*. This can be done by keeping track of an *exp* value that begins at 0. <br>
-    **Step 1.1:** If 2^*exp* is less than or equal to *m*, add 1 to *exp* and repeat **Step 1.1**. Otherwise, we have determined that 2^(*exp*-1) is the greatest power of 2 less than or equal to *m*. <br>
+    **Step 1.1:** If 2^*exp* is less than or equal to *m*, add 1 to *exp* and repeat step 1.1. Otherwise, we have determined that 2^(*exp*-1) is the greatest power of 2 less than or equal to *m*. <br>
   **Step 2:** Add 10^(*exp*-1) to *bin* (treat *bin* as a base-10 number during this step). <br>
   **Step 3:** Subtract 2^(*exp*-1) from *m*. <br>
   **Step 4:** Subtract 1 from *exp*. If *exp* is equal to 0, skip the rest of the steps, and *bin* is the converted binary number. <br>
