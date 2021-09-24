@@ -1,7 +1,7 @@
-####Long Island Railroad: Lawrence Joa, Ivina Wang, Raven (Ruiwen) Tang
-####APCS
-####HW03 -- Codify the Revisions / revise binary-decimal work based on peer feedback
-####2021-09-23
+#### Long Island Railroad: Lawrence Joa, Ivina Wang, Raven (Ruiwen) Tang
+#### APCS
+#### HW03 -- Codify the Revisions / revise binary-decimal work based on peer feedback
+#### 2021-09-23
 
 0. The "base" in a "base-X number system" determines what digits are used in the system (ex: base-10 uses digits 0 to 9, and base-2 uses digits 0 and 1). 
   In particular, powers of X correspond to place values. 
