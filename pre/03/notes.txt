@@ -1,0 +1,11 @@
+Think Java 4.11 Ex 1
+  1. Output of program: 
+    No, I wug.
+    You wugga wug.
+    I wug.
+  2. Stack diagram showing state of program the first time ping is invoked:
+    main
+    zoop
+    baffle
+    ping
+  3. If baffle() is invoked at the end of the ping method, an infinite loop would be created with baffle and ping calling each other, which would be a problem.
