@@ -1,0 +1,144 @@
+Raven (Ruiwen) Tang
+APCS
+Prework-01
+2021-08-..
+
+- ls command to list items in directory
+- javac to compile code (ex: javac Hello.java)
+- Fix any errors that may come up + repeat until code compiles
+- Repeat ls to check if there is a new file (ex: Hello.class)
+- java to run code (ex: java Hello)
+
+Hardware and Software
+- Hardware: physical devices, physical (electronic + mechanical components) parts of the computer
+- Major hardware components of a computer system
+  - Processor
+    - Small electronic device covered in plastic
+    - Has a square of silicon w/ millions of tiny electrical parts
+    - Does fundamental computing
+    - Directly/indirectly controls other components (sometimes called the Central Processing Unit aka CPU)
+    - Relatively little memory, only enough memory to hold a few instructions of a program and the data they process
+  - Main memory
+    - Sometimes called volatile
+    - Loses info when power is removed
+    - Expensive
+    - Sometimes called main storage
+    - Closely connected to processor → stored data quickly/easily changed
+    - Holds programs + data the processor is actively working with
+    - Sometimes called RAM (Random Access Memory)
+    - Random means that the memory cells can be accessed in any order
+    - Properly, RAM means type of silicon chip used to implement main memory
+  - Secondary memory
+    - Usually nonvolatile
+    - Retains info when power is removed, but needs power when info is stored/retrieved
+    - Cheap
+    - Sometimes called secondary/mass storage
+    - Connected to main memory through bus + a controller
+    - Stored data easily changed, but slow compared to main memory
+    - Used for long-term storage
+    - Before data + programs can be used, must be copied from secondary memory into main memory, copy remains in secondary memory
+    - Common secondary storage devices: hard disk, optical disks
+    - Enormous storage capacity compared to main memory
+    - Data + programs on hard disk are organized into files, and a file = collection of data on the disk that has a name
+  - Reason for two types of memory is difference in speed and capacity
+  - Operating system manages main storage + disks by reading sections into main memory and making ready for processor while processor is computing
+  - I/O devices
+    - Input devices (ex: keyboard, network interface)
+    - Output devices (ex: monitor, network interface)
+    - Directly connected to an electronic module attached to the motherboard called a device controller
+    - Some motherboards have audio, graphics, network controllers built in
+    - Data transfers form network much slower than from main memory and even slower than hard disk
+    - Input/output specify if data flow into/out of computer
+    - Sometimes secondary memory devices like the hard disk are called I/O devices b/c they move data in/out of main memory
+    - I/O classification depends on context
+      - User: I/O device is something outside of computer case
+      - Programmer: anything outside processor/main memory
+      - Engineer working on processor design: everything outside of processor 
+      - Processor, main memory, secondary memory, power supply, supporting hardware housed in metal case for typical desktop computers
+  - Motherboard = main circuit board of the computer
+  - Power supply
+  - Bus = group of wires on the main circuit board of the computer, pathway for data flowing btw components
+    - Most devices connected to bus through a controller
+    
+Embedded System
+- Computer system that is part of a larger machine + which controls how that machine operates
+- Usually, the processor constantly runs a single control program which is permanently kept in ROM (Read Only Memory)
+- Used to make a section of main memory read-only
+- Section of main memory permanently contains the program the processor is running + retains data even when power is off
+- Some do not use an operating system and run programs directly on processor
+
+Software: information used with such devices, programs + data used with the physical computer
+- Programs and data are saved in computer memory in the same way, no distinction by electronics of computer memory
+- Categories of programs
+  - Applications
+  - Systems (keep the hardware + software running together smoothly)
+  - Operating system
+    - Always present when computer is running
+    - Responsible for starting up application programs, running them, managing the resources that they need
+    - When application program is running, OS manages details of hardware for it
+    - Modern OS come with user interface that enables users to easily interact w/ application programs + OS by itself
+- Hard disk used for storing applications
+- Only one OS at a time can be in control of the computer system, although some computer systems can potentially install + run any of several, computer user makes a choice when computer is turned on, and that remains inc control until turned off
+  - Ex: Unix, Linux, Android, Mac OS, Windows
+- Starting a program
+  - Booting = hardware automatically loads OS and starts running it when computer is first started
+- Starting an application
+  - User asks to run an application
+  - OS determines name of application
+  - OS finds files on hard disk where application and its data are stored
+  - OS finds unused section of main memory that is large enough for application
+  - OS makes copy of application + its data in that section of main memory
+  - OS sets up resources for application
+  - OS starts running application
+  - As application runs, OS is in background managing resources, doing I/O, and keeping everything else running
+
+Network
+- Consists of 2+ computers connected so that they can exchange data + programs
+- When computer is member of a network, the programs it runs & data it uses can be on hard disk of some other computer on network
+- Most computers are on network in business & industrial settings
+- Operating system on networked computer manages its share of network & finds programs, data on other network computers + copies into its main memory
+- Local-area network
+  - Only a few dozen computers
+  - Usually all located w/in same building
+  - Share a printer
+  - There may be especially powerful computer called server whose hard disk holds programs + data that other computers are expected to need
+- Wide-area network
+  - More computers
+  - Greater distance
+  - Connections made using optical fiber, telephone lines, microwave radio, satellite communications
+  - Usually use TCP/IP (transmission control protocol/internet protocol) for protocol
+- Each computer has network address that other computers use to access it
+- Each computer has network interface card: input/output device that sends & receives data over cables, radio waves, etc.
+- Protocol = agreement about how to represent & transmit data over a network
+- Internet
+  - Consists of many networks that have been connected together to form one huge worldwide network
+  - IP address = network address on Internet, 32-bit binary numbers
+  - Allows humans to use computer names rather than numbers
+  - Like a worldwide package delivery service, concerned w/ moving packages from one address to another, w/o concern about what is in the packages
+  - World Wide Web
+    - Internet provides hardware + info transmission protocols for World Wide Web
+    - Web data is intended for Web browsers
+    - Browser = program that can read Web pages and display them in a nicely formatted way
+    - Web page = package of data that contains info on how it is to be displayed on a monitor
+    - Hypertext Markup Language (HTML) = language giving info on how webpage is to be displayed
+    - Tools/Web Developer/Page Source to view HTML of a page
+    - Hyperlink
+      - Usually displayed in distinguishing color (ex: blue)
+      - When clicked, browser asks operating system to get a particular Web page from another computer connected to the Internet
+    - Uniform resource locator (URL) specifies the exact computer and the Web page on that computer
+
+Binary
+- Means “two states” (sometimes “1” and “0,” “true” and “false,” or “on” and “off”)
+- Single binary device can be in just one of two possible states
+- Bit = single on/off value
+- Why do computers use it?
+  - Characteristics realized by Claude Shannon (A Mathematical Theory of Communication)
+  - Simple and easy to build binary device
+  - Binary signals are unambiguous (noise immunity)
+  - Flawless copies can be made of binary data
+  - Anything that can be represented with some sort of pattern can be represented with patterns of bits
+- Discrete
+  - Discrete or digital signals have a fixed number of definite states
+- Analog Signal
+  - May continuously change in value
+  - Any voltage below a threshold will be counted as an “off” signal and any value about the threshold will be counted from “one”
