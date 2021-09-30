@@ -1,6 +1,6 @@
 //Raven (Ruiwen) Tang
 //APCS
-//HW07 - Greet.java prints a line, practice pushing to GH
+//HW07 - Saving Your Class/Greet.java prints a line, practice pushing to GH
 //2021-09-30
 
 public class Greet {
