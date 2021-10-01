@@ -1,6 +1,6 @@
 //Long Island Railroad: Lawrence Joa, Ivina Wang, Raven (Ruiwen) Tang
 //APCS
-//HW08 - Refactor Freshie Zero
+//HW08 - Refactor Freshie Zero: building upon HW07
 //2021-09-30
 /*
 DISCOVERIES:
