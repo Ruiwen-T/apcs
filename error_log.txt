@@ -1,3 +1,4 @@
 Errors encountered:
 - Class names, 'uhjava', are only accepted if annotation processing is explicitly requested
 - ';' expected
+- non-static variable helloMsg cannot be referenced from a static context
