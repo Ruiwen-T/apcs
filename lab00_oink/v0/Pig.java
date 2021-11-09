@@ -22,6 +22,26 @@
  *      NEVER STRAY TOO FAR FROM COMPILABILITY/RUNNABILITY!
  ***/
 
+/***
+DISCO:
+- accomplished by v1:
+	- fulfills general rules (moves leading consonant to end of word, appends "ay" OR appends "way" if word begins with vowel)
+	- hasAVowel works as expected
+	- translator can handle words that begin with a capital consonant
+	- translator can handle punctuation (to a limited extent)
+- y is a vowel when appropriate. when it is the first letter of a word, it is a consonant, and when it is in the middle of a word, it is a vowel.
+- in the firstVowel method, we need to check hasAVowel first, because if the inputted string does not have any vowels, allVowels(w) will return an empty string, and attempting to find a substring of this empty string would create an index out of range error.
+QCC:
+- to do for next time: 
+	- incorporate Scanner functionality
+	- deal with capital vowels (not considered vowels as of now)
+	- polish capitalization, figure out specific cases
+	- deal with spaces/sentences
+	- deal with y 
+	- more irregular cases: punctuation in the middle of a word (ex: hyphenation), capitalization in the middle of a word
+- for a more efficient way to do hasA without indexOf, we were thinking of using a recursive approach, with the base case being a w with length 1 and the recursive case calling hasA for a substring of w. however, we're not sure if this is more "effective."
+***/
+
 
 public class Pig {
 
