@@ -1,8 +1,8 @@
 /***
- * Clyde "Thluffy" Sinclair
+ * Lenovo: Lea Kwok, Xinqing Lin, Raven (Ruiwen) Tang
  * APCS
  * HW31 -- deploying linear search on Strings, using helper methods
- * 2021-11-04r
+ * 2021-11-08
  * time spent: .5hrs
  *
  * class Pig
@@ -90,7 +90,7 @@ public class Pig {
     hasAVowel("zzz") -> false
     **/
   public static boolean hasAVowel( String w ) {
-    return w.indexOf(w) >= 0;
+    return (countVowels(w) > 0);
   }
 
 
@@ -180,7 +180,7 @@ public class Pig {
             isUpperCase("A") -> true
       =====================================*/
     public static boolean isUpperCase( String letter ) {
-
+	return false; //filler
     }
 
 
@@ -191,7 +191,7 @@ public class Pig {
             hasPunc(“cat”) -> false
       =====================================*/
     public static boolean hasPunc( String w ) {
-
+	return false; //filler
     }
 
 
