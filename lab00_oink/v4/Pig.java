@@ -48,11 +48,6 @@ HOW WE UTILIZED SCANNER DEMO (v3):
 WHAT CAUSES THE RUNTIME ERROR IN THE SCANNER DEMO:
 - The while loop tries to echo back the input, but it outputs 2 for each input. It will output more than it inputs, and soon run out of elements to reference.
 
-NEW IN v3:
-- incorporate Scanner functionality
-- deal with capital vowels (not considered vowels as of now) and words starting with capitals
-- deal with punctuation at the end of a word
-- deal with y (both capital and lowercase and when it should be treated as a vowel)
 ***/
 
 import java.util.Scanner;
