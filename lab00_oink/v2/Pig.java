@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /***
  * Lenovo: Lea Kwok, Xinqing Lin, Raven (Ruiwen) Tang
  * APCS
@@ -520,4 +519,3 @@ public class Pig {
   }//end main()
 
 }//end class Pig
->>>>>>> 2757f81d53f9790c0046d2892bb8ac896e63340c
