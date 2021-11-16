@@ -1,24 +1,15 @@
 /* 
-Un-up Town Leopard Rock
+Un-up Town Leopard Rock: Lea Kwok, Raven (Ruiwen) Tang
 APCS
-HW34-- A Pirate's Life for Me - Writing methods for Arrays
+HW35-- A Pirate's Life for Me - refactored HW34
 2021-11-14
 time spent: 01.5 hours
 
 DISCO:
-- If we set an int equal to an integer greater than 2^31-1, it does not loop back to the negative numbers. int is set to 2^31-1, which is 2147483647.
-- In our randomArr method, we had to use a regular for loop because the for each loop did not work in accessing and changing array elements, even though it works when printing them.
-- System.out.println(numbers); prints out the address of the array instead of the values in the array if the toString method isn't overridden.
-
+- Looking at other teams' code, we realized we could have created more helper methods for functionalities that we use often (like transferring parts of an array to a new array.
+- We also could have used the for each loop more.
 QCC:
-- We used the ^ operator instead of Math.pow() and it seemed to work with two integers, but we weren't sure what it was doing. 2^33 outputted 35. 5^33 outputted 36. 2^32 outputted 34. 5^32 outputted 37. It seems like it outputs the same result every time, so it's not random. For some of the outputs, the result matches the sum of the two numbers, but not always, so we don't know what ^ actually does.
-- Is there a built-in indexOf method for Arrays, like there is for Strings?
-- Can we use our toString() method to perform linear search on the String rather than the Array? 
-	if((int)(numbers.toString().substring(1, numbers.toString().indexOf(","))) == 4){
-					System.out.println("It worked!");
-				}
-	It seems like we need a way to turn String into int or vice versa.
-
+- Recursion seems a lot harder for these problems than iteration, and it seems like our classmates agree on Piazza
 */
 
 public class Loopier {
