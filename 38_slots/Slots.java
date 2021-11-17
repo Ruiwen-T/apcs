@@ -51,9 +51,9 @@ public class Slots {
     =====================================*/
   public String toString()
   {
-	 result = "";
+	String result = "";
 	 for(int i = 0; i < 3; i++){
-		results += _fruits[i] + "\t";
+		result += _fruits[i] + "\t";
 	}
 	return result;
   }
@@ -113,6 +113,7 @@ public class Slots {
 
 
 //    return retBoo;
+	return true;
   }
 
 
