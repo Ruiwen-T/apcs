@@ -2,8 +2,8 @@
 Un-up Town Leopard Rock: Lea Kwok, Raven (Ruiwen) Tang
 APCS
 HW35-- A Pirate's Life for Me - refactored HW34
-2021-11-14
-time spent: 01.5 hours
+2021-11-15
+time spent: 01.0 hours
 
 DISCO:
 - Looking at other teams' code, we realized we could have created more helper methods for functionalities that we use often (like transferring parts of an array to a new array.
