@@ -1,9 +1,22 @@
 /*****************************************************
- * Clyde "Thluffy" Sinclair
- * APCS pd00
- * HW38 -- Shmoney
- * 2021-11-18
+ * Team Un-up Town Leopard Rock: Lea Kwok, Raven Tang
+ * APCS pd07
+ * HW38 -- Shmoney/filling out Slots.java skeleton, simulate slots machine
+ * 2021-11-17
+ * time spent: 00.7 hours
  *
+DISCO:
+- It's a good idea to fill out the toString() method first because it allows the test calls of other methods in main() to actually be helpful.
+- You can initialize a boolean to be a boolean expresion. For example:
+	    boolean retBoo = jackpot() || (!(_fruits[0].equals(_fruits[1])) && !(_fruits[1].equals(_fruits[2])) && !(_fruits[0].equals(_fruits[2])));
+- You can use methods that are already written to write other methods. For example, we used jackpot() in miniWin() and swap() in spinOnce().
+- The more fruits are added to FRUITS, the harder it is/longer it takes to hit a jackpot, and the easer it is/shorter it takes to hit a mini win. 
+
+QCC:
+- Why does the tabbing for the output look a bit off/not consistently spaced?
+- It's convenient that if you want to randomly pick an index of an array, you can use (int)(Math.random()*arr.length).
+- Is there syntactic sugar for adding copies of the same element to an array (for example, if we wanted to add "grapefruit" 3 times to FRUITS)?
+
  * class Slots
  * skeleton
  *****************************************************/
@@ -18,15 +31,17 @@ public class Slots {
     /*
       add extra fruits until your heart is content...
       Some suggestions:
+    */
     "orange", "orange", "orange", 
     "grapefruit", "grapefruit", "grapefruit", 
     "tangerine", "tangerine", "tangerine", 
     "ugli", "ugli", "ugli", 
-    */
-    "peach", "peach", "peach"
+    "peach", "peach", "peach",
+    "pineapple", "pineapple", "pineapple",
+    "mango", "mango", "mango"
   };
 
-  private String[] _fruits = {"test1", "test2", "rock", "test"}; //to be init'd by each instance
+  private String[] _fruits; //to be init'd by each instance
 
 
   /*=====================================
@@ -37,10 +52,12 @@ public class Slots {
   public Slots()
   {
     //allocate memory for _fruits based on size of FRUITS:
-  
+    _fruits = new String[FRUITS.length];  
 
     //copy elements of FRUITS into _fruits:
-
+    for(int i = 0; i < FRUITS.length; i++){
+	_fruits[i] = FRUITS[i];
+    }
   }
 
 
@@ -66,7 +83,9 @@ public class Slots {
     =====================================*/
   private void swap( int i, int j )
   {
-
+	String storeI = _fruits[i];
+	_fruits[i] = _fruits[j];
+	_fruits[j] = storeI;
   }
 
 
@@ -80,8 +99,9 @@ public class Slots {
     // A simple approach to shuffling:
     // iterate through the array, swapping
     // the val at each index with a randomly chosen other index
-//    for(  )
-//     swap(  );
+    for(int i = 0; i < _fruits.length; i++ ){
+     swap(i, (int)(Math.random()*_fruits.length));
+    }
   }
 
 
@@ -94,7 +114,9 @@ public class Slots {
   public boolean jackpot()
   {
     boolean retBoo = false;
-
+    if(_fruits[0].equals(_fruits[1]) && _fruits[1].equals(_fruits[2])){
+	retBoo = true;
+    }
 
     return retBoo;
   }
@@ -109,11 +131,8 @@ public class Slots {
     =====================================*/
   public boolean miniWin()
   {
-//    boolean retBoo = ?
-
-
-//    return retBoo;
-	return true;
+    boolean retBoo = jackpot() || (!(_fruits[0].equals(_fruits[1])) && !(_fruits[1].equals(_fruits[2])) && !(_fruits[0].equals(_fruits[2])));
+    return retBoo;
   }
 
 
@@ -129,7 +148,10 @@ public class Slots {
     System.out.println( "Machine01 initial state:\t" + machine01 );
     System.out.println( "Machine02 initial state:\t" + machine02 );
 
-    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //test swap() method
+    machine01.swap(0, 2);
+    System.out.println( "Machine01 after swapping:\t" + machine01);  
+
     System.out.println( "\nSpinning machine01...\n" );
 
     machine01.spinOnce();
@@ -139,6 +161,8 @@ public class Slots {
     System.out.println( "Machine02 state:\t" + machine02 );
     System.out.println();
 
+    //test jackpot()
+    System.out.println(machine02.jackpot());
 
     //test gamble-until-you-win mechanism
 
@@ -171,6 +195,8 @@ public class Slots {
     System.out.println( "====================================" );
     System.out.println( "Your spin..." + "\t" + machine01 );
     System.out.println( "JACKPOT!\n" );
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   }//end main
 
