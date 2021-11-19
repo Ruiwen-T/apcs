@@ -1,0 +1,72 @@
+Raven (Ruiwen) Tang 
+APCS
+HW36: All Quacked Up / reading Appendix D of ThinkJava
+2021-11-19
+time spent: 1.0 hr
+
+Kinds of Errors
+	- compile-time: something is wrong w/ syntax
+	- run-time: something goes wrong while program is running
+	- logic: program doesn't do what you think it does
+Compile-time Errors:
+	- preventative approach: incremental development
+	- only the first error message is reliable 
+	- read error messages carefully
+	- look to where computer points you to, but also broaden search
+	- indent properly
+	- Common Syntax Errors (what to check for)
+		- all parentheses + brackets balanced, properly nested
+		- uppercase vs. lowercase
+		- semicolons
+		- matching quotation marks, String-> "", char-> ''
+		- assignment statements
+			- can you actually assign a value to expression on left?
+			- does the type on the left match the type on the right?
+		- invoking a value method: should be doing something w/ result
+		- invoking a void method: should not be doing something w/ result
+		- invoke instance methods on objects w/ right type
+		- invoke static methods outside of clsas where defined by specifying class name + dot notation
+		- inside instance method, can refer to instance variables w/o specifying objject but not in static method
+	- check if editing the program that the computer is compiling (try putting deliberate syntax error right at beginning to confirm)
+	- debugging by bisection 
+		- make backup (Bob.java.old)
+		- delete about half of code
+		- determine which half error is in and repeat
+	- error messages not reliable, don't completely follow what they say
+Run-time Errors:
+	- add print statements (but in organized, controlled, helpful manner!)
+	- "hanging" = program stops + seems to be doing nothing (usually infinite loop or recursion)
+		- add "entering loop"/"exiting loop" immediately before/after loop
+		- StackOverflowError?
+		- recomprehend flow of execution: order program actually runs
+		- infinite loop: add print at end of loop w/ variable + condition values
+		- infinite recursion: check base case + check that program reaches it, add print at beginning of method w/ parameters
+		- flow of execution: add print at beginning of each method to display a trace, or display arguments
+	- getting an exception
+		- we receive: name of exception, line where it occurred, stack trace (method that was running, method that invoked it, ...)
+		- NullPointerException
+			- which variable is null, and how did it get there?
+		- ArrayIndexOutOfBoundsException
+			- negative or > array.length-1
+			- print array size, index
+		- StackOverflowError
+		- FileNotFoundException
+			- make sure file exists and path is correct
+		- Arithmetic Exception
+			- something went wrong during arithmetic operation (ex: x/0)
+	- scale down problem program is working on
+	- clean up + reorganize
+Logic Errors:
+	- is there something the program was supposed to do that isn't/doesn't seem to be happening?
+	- is something happening that shouldn't?
+	- unexpected effect?
+	- break program into independent components to find discrepancies btw mental model + reality
+	- break complex expression into series of assignments to temporary variables
+	- change print to println if print statement not doing anything
+	- take time away
+	- talk to human/rubber ducky
+	- Common Logic Errors (what to check for)
+		- integer division truncates (use integers for countable things and floating points for measurable things)
+		- if Math.abs(d-1.23) < 0.0000001 instead of if(d == 1.23)
+		- == vs .equals
+		- inheritance
