@@ -1,7 +1,8 @@
-// Clyde "Thluffy" Sinclair
-// APCS1 pd0
-// HW44 -- expanding SuperArray functionality, encapsulation
-// 2021-12-08w
+// Un-upTown Leopard Rock: Lea Kwok, Raven (Ruiwen) Tang
+// APCS pd7
+// HW44 -- Array of Grade 316
+// 2021-12-07
+// time spent: 01.2 hours
 /*
 DISCO:
 - _data is the "underlying array" of SuperArray, according to a comment in the provided test cases. We need to check the length of the underlying array rather than _size for methods like expand() to make sure the size of _data has expanded, not the size of SuperArray just yet.
