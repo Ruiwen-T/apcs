@@ -72,7 +72,7 @@ public class SelectionSort
       System.out.println( "\nbegin pass " + pass );//diag
       maxPos = i;
       
-      for( int j = i; j < data.size(); j++ ) {
+      for( int j = 0; j < data.size()-i; j++ ) {
       	if(data.get(j).compareTo(data.get(maxPos)) > 0){
       		maxPos = j;
       	}
@@ -81,7 +81,7 @@ public class SelectionSort
 
         
       }
-      data.set( i, data.set( maxPos, data.get(i) ) );
+      data.set( data.size()-1-i, data.set( maxPos, data.get(data.size()-1-i) ) );
       System.out.println( "after swap: " +  data );//diag
     }
   }//end selectionSort
