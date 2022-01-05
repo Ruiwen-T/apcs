@@ -1,27 +1,39 @@
-// Clyde "Thluffy" Sinclair
-// APCS pd0
-// HW52 -- implementing selection sort
-// 2022-01-05w
-// time spent:  hrs
+/* 
+Un-upTown Leopard Rock: Lea Kwok, Raven (Ruiwen) Tang
+APCS pd7
+HW52 -- Selection, Natch
+2022-01-05
+time spent: 00.7 hour
+
+Collaborated with TLP in class
+*/
 
 /******************************
  *   class SelectionSort -- implements SelectionSort algorithm
  *
- * ALGO:
+ * ALGO: 
+    Start from the right end of the ArrayList and compare the elements in the ArrayList to find the greatest element. 
+    Keep track of the index of the greatest element in maxPos.
+    Swap the element at maxPos with the element at the end of the window, which starts from the rightmost element on the first pass and shifts one element left with each pass.
+    Repeat by starting at the next rightmost element and so on.
+    There should be a total of n-1 passes for n elements.
  * 
  * DISCO
+    We got thrown off by looking for the maximum instead of the minimum, which we were doing in class. When trying to fix our algorithm, we got confused, but it was helpful to comment everything out and rewrite it.
+    Pass is equal to data.size()-1, not the actual number of passes.
+    It seems like there is no way to "short circuit" and be certain there are no more swaps, unlike Bubble Sort. In Selection Sort, all cases take the same amount of time.
+    We noticed there would be the same number of passes in the worst cases of Bubble Sort and Selection Sort. Each cases iterates through the same amount.
  *
  * QCC
  * q0: How many passes to sort n elements?
- * a0: 
+ * a0: n-1 passes
  * q1: What do you know after pass p?
- * a1: 
+ * a1: The greatest p elements have been found and placed in their rightful position. There are p less elements to include in the next passes.
  * q2: How do you know if sorted?
- * a2:
+ * a2: Completed n-1 passes on n elements
  * q3: What does a pass boil down to?
- * a3: 
+ * a3: Finding the greatest element within a window and swapping it with the element at the end of the window
  ******************************/
-
 
 import java.util.ArrayList;
 
@@ -56,7 +68,6 @@ public class SelectionSort
   }
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
   // VOID version of SelectionSort
   // Rearranges elements of input ArrayList
   // postcondition: data's elements sorted in ascending order
@@ -66,26 +77,27 @@ public class SelectionSort
 
     //maxPos will point to position of SELECTION (greatest value)
     int maxPos;
-    int pass;
-    for( int i = 0; i < data.size()-1; i++ ) {
-      pass = i+1;
-      System.out.println( "\nbegin pass " + pass );//diag
-      maxPos = i;
+
+    for( int pass = data.size()-1; pass > -1; pass--   ) {
+      System.out.println( "\nbegin pass " + (data.size()-pass) );//diag
+
+        maxPos = pass;
       
-      for( int j = 0; j < data.size()-i; j++ ) {
-      	if(data.get(j).compareTo(data.get(maxPos)) > 0){
+      for( int j = pass; j > -1; j--  ) {
+        if(data.get(j).compareTo(data.get(maxPos)) > 0){
       		maxPos = j;
       	}
+        
         System.out.println( "maxPos: " + maxPos );//diag
         System.out.println( data );//diag
 
-        
       }
-      data.set( data.size()-1-i, data.set( maxPos, data.get(data.size()-1-i) ) );
+
+      data.set(pass, data.set( maxPos, data.get(pass) ) );
       System.out.println( "after swap: " +  data );//diag
     }
-  }//end selectionSort
 
+  }//end selectionSort
 
   // ArrayList-returning selectionSort
   // postcondition: order of input ArrayList's elements unchanged
@@ -105,10 +117,10 @@ public class SelectionSort
     return data;
   }//end selectionSort
 
-
   public static void main( String [] args )
   {
 
+    /*===============for VOID methods=============
     ArrayList glen = new ArrayList<Integer>();
     glen.add(7);
     glen.add(1);
@@ -123,7 +135,6 @@ public class SelectionSort
     System.out.println( "ArrayList coco before sorting:\n" + coco );
     selectionSortV(coco);
     System.out.println( "ArrayList coco after sorting:\n" + coco );
-        /*===============for VOID methods=============
       ============================================*/
 
     /*==========for AL-returning methods==========
@@ -151,4 +162,3 @@ public class SelectionSort
   }//end main
 
 }//end class SelectionSort
-
