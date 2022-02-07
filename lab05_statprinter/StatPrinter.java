@@ -69,7 +69,6 @@ public class StatPrinter
   each element in data will be handled once in order for the desired info to be 
   recorded in _frequency, which also takes linear time.
   */
-  and 
   public StatPrinter( ArrayList <Integer> data )
   {
     _frequency = new ArrayList <Integer>();
