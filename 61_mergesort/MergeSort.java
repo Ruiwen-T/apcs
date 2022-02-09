@@ -1,3 +1,11 @@
+/**
+Avocado: Brianna Tieu, Raven (Ruiwen) Tang
+APCS pd06
+HW61 -- Instructions so Simple... / merge sort
+2022-02-8
+time spent: 0.8 hours
+**/
+
 import java.util.ArrayList;
 /***
   class MergeSort
@@ -60,6 +68,35 @@ public class MergeSort
       merged[i] = mergedAL.get(i);
     }
     return merged;
+
+    /** ALTERNATE SOLUTION
+    int aIndex = 0;
+    int bIndex = 0;
+
+    while (aIndex < a.length && bIndex < b.length) {
+      if (a[aIndex] < b[bIndex]) {
+        merged[aIndex + bIndex] = a[aIndex];
+        aIndex++;
+      }
+      else {
+        merged[aIndex + bIndex] = b[bIndex];
+        bIndex++;
+      }
+    }
+    if (aIndex == a.length) {
+      while (aIndex + bIndex != merged.length) {
+        merged[aIndex + bIndex] = b[bIndex];
+        bIndex++;
+      }
+    }
+    if (bIndex == b.length) {
+      while (aIndex + bIndex != merged.length) {
+        merged[aIndex + bIndex] = a[aIndex];
+        aIndex++;
+      }
+  }
+    return merged;
+    **/
   }
 
 
