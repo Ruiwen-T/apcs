@@ -17,3 +17,6 @@ Activity 1:
 3c) No, because sentimentVal only takes one String.
 
 Activity 2:
+
+
+- remove punctuation in totalSentiment
