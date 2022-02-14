@@ -1,4 +1,8 @@
-Team Avocado
+Team Avocado: Brianna Tieu, Raven (Ruiwen) Tang
+APCS
+Lab06 -- Read/Review/Expand - cobo review lab
+2022-02-13
+time spent: 2.0
 
 Activity 1:
 
@@ -68,5 +72,92 @@ Activity 4
 2) One possible reason to autogenerate a positive review is if a reviewer had great experiences at several restaurants and would
    like to mass add unique reviews to all of their Yelp pages but does not have the time to individually craft each one.
 
-3) 
+3) String rev = file contents
+   String next, fake, adj, punct = ""
+   boolean posRev = false
+   if totalSentiment > 0: posRev = true
+   while rev.indexOf("*") > -1:
+    fake += rev.substring(0, indexOf(*))
+    adj = rev.substring(indexOf(*), indexOf(" "))
+    punct = getPunctuation(adj)
+    if posRev:
+        if sentimentVal(adjsubstring(1)) <= 0:
+            fake += randomPositive + punct
+            rev = rev.substring(indexOf(" "))
+        else:
+            fake += adjsubstring(1)
+            rev = rev.substring(indexOf(" ")) 
+    else:
+        if sentimentVal(adjsubstring(1)) >= 0:
+            fake += randomNegative + punct
+            rev = rev.substring(indexOf(" "))
+        else:
+            fake += adjsubstring(1)
+            rev = rev.substring(indexOf(" ")) 
+    fake += rev
+    return fake
+
+5) oneWord = oneWord.substring(1) --> the first character of oneWord has been removed
+
+6) It's necessary to remove the * character before getting an adjective's sentiment value because cleanSentiment does not include * characters and will not recognized a word if it is preceded by extra characters.
+
+7) In addition to changing negative and neutral adjectives to positive noes, it can change positive adjectives to adjectives with even higher sentiment values.
+
+Activity 5
+1) We chose to implement this program because similar methods are used in many password-protected sites
+   and because we felt that it provided an opportunity to work with Strings and use the substring() and indexOf() methods.
+
+2) We outlined the purpose of our program, created an algorithm, outlined code basedon our algorithm, tested, and improved.
+
+3) public static String check(String password)
+   We chose a String parameter as that variable type would be most compatible with taking in a user's input and checking it for 
+   characters. We made this method static because it shouldn't require an instance of the OpenEnded class.
+
+4) welcome();
+  System.out.println(check(pass));
+  The welcome() method call prints instructions to the user. The check() method checks a String password for validity and then prints
+  a message for the user indicating validity and what, if any, requirements were not fulfilled.
+
+5) if (upperCount > 0 && lowerCount > 0 && numberCount > 0 && symbolCount > 0) {
+      return "Your password is valid!";
+    } 
+    EQUIVALENT
+    if (upperCount > 0){
+        if (lowerCount > 0){
+            if (numberCount > 0){
+                if(symbolCount > 0){
+                    return "Your password is valid!";
+                }
+            }
+        }
+    } 
+
+6) for (int i = 0; i < symbols.length(); i++) {
+        if (password.indexOf(symbols.substring(i, i+1)) > -1) {
+          symbolCount++;
+          if(symbolCount > 0){
+              break;
+          }
+        }
+        if(password.indexOf('"') > -1){
+            symbolCount++;
+        }
+    }
+    This for loop iterates through the one-character substrings of symbols and checks if they are present
+    in the password.
+    EQUIVALENT
+    int i = 0;
+    while(i < symbols.length()) {
+        if (password.indexOf(symbols.substring(i, i+1)) > -1) {
+          symbolCount++;
+          if(symbolCount > 0){
+              break;
+          }
+        }
+        if(password.indexOf('"') > -1){
+            symbolCount++;
+        }
+        i++;
+    }
+
 - remove punctuation in totalSentiment
