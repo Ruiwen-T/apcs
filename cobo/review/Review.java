@@ -102,8 +102,8 @@ public class Review {
     String rev = textToString(fileName);
     double totSent = 0;
     while(rev.indexOf(" ") > -1){
-	totSent += sentimentVal(removePunctuation(rev.substring(0, rev.indexOf(" "))));
-	rev = rev.substring(rev.indexOf(" ") + 1, rev.length());
+	    totSent += sentimentVal(removePunctuation(rev.substring(0, rev.indexOf(" "))));
+	    rev = rev.substring(rev.indexOf(" ") + 1, rev.length());
     }
     totSent += sentimentVal(removePunctuation(rev));
     return totSent;
@@ -114,26 +114,67 @@ public class Review {
     double total = totalSentiment(fileName);
     int wordCount = 0;
     while(rev.indexOf(" ") > -1){
-	wordCount += 1;
+	    wordCount += 1;
+      rev = rev.substring(rev.indexOf(" ") + 1, rev.length());
     }
     wordCount += 1;
-    if(total/wordCount >= 1){
+    if(total/wordCount >= 0.6){
     	return 5;
     }
-    if(total/wordCount >= 0.5){
+    if(total/wordCount >= 0.3){
     	return 4;
     }
     if(total/wordCount >= 0){
     	return 3;
     }
-    if(total/wordCount >= -0.5){
+    if(total/wordCount >= -0.3){
     	return 2;
     }
-    if(total/wordCount >= -1){
+    if(total/wordCount >= -0.6){
     	return 1;
     }
     return 0;
   }
+
+  public static String fakeReview(String fileName) {
+    String rev = textToString(fileName) + " ";
+    String next = "";
+    String fake = "";
+    String adj = "";
+    String punct = "";
+    boolean posRev = false;
+    if(totalSentiment(fileName) > 0){
+      posRev = true;
+    }
+    while (rev.indexOf("*") > -1) {
+      fake += rev.substring(0, rev.indexOf("*"));
+      rev = rev.substring(rev.indexOf("*"));
+      adj = rev.substring(rev.indexOf("*"), rev.indexOf(" "));
+      punct = getPunctuation(rev.substring(rev.indexOf("*"), rev.indexOf(" ")));
+      if(posRev){
+        if (sentimentVal(adj.substring(1)) <= 0) {
+          fake += randomPositiveAdj() + punct;
+          rev = rev.substring(rev.indexOf(" "));
+        }
+        else{
+          fake += adj.substring(1);
+          rev = rev.substring(rev.indexOf(" "));
+        }
+      }
+      else{
+        if (sentimentVal(adj.substring(1)) >= 0) {
+          fake += randomNegativeAdj() + punct;
+          rev = rev.substring(rev.indexOf(" "));
+        }
+        else{
+          fake += adj.substring(1);
+          rev = rev.substring(rev.indexOf(" "));
+        }
+      }
+    }
+    fake += rev;
+    return fake;
+  } 
 
   /**
    * Returns the ending punctuation of a string, or the empty string if there is none
@@ -233,5 +274,8 @@ public class Review {
     	check += sentimentVal(s);
     }
     System.out.println("total sentiment value of simple review, checking by sum: " + check);
+    System.out.println("star rating of simple review: " + starRating("SimpleReview.txt"));
+    System.out.println("star rating of another review: " + starRating("AnotherReview.txt"));
+    System.out.println("generated review: " + fakeReview("SimpleReview.txt"));
   }
 }
