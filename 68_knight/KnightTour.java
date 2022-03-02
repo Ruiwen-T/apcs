@@ -15,16 +15,26 @@
  * $ java KnightTour [N]
  *
  * ALGO
- *
+ * Pick a starting position.
+ * If the number of moves = n*n, you have successfully completed a tour, and you're done.
+ * If the position you are at has already been visited or is in the "moat," this tour is unsuccessful. 
+ * Else, mark the position you are at with the current number of moves.
+ * Repeat steps 2-4 with all of the positions that are a valid knight's move away from your current position. Incrememnt the moves counter by 1.
+ * If none of the paths above led to a tour, "backtrack" and set this position to 0.
  * DISCO
- *
+ * - We can use Thread.sleep to slow down the process of our code and visualize the board becoming populated by knights.
+ * - Since we check if the position is in the moat or already visited, we can simply call findTour() for all of the possible knight moves. We don't have to worry about whether these moves are valid or not, because the previous conditional will catch all of these illegal cases.
+ * - We use return in a void method to "break" from the process that is running and stop progressing through the method.
  * QCC
- *  - Why are we getting an "[0;0H" in the top left corner of our board when it is printed?
+ * - Why are we getting an "[0;0H" in the top left corner of our board when it is printed?
+ * - We need to add by 2 to the random integer between 0 and n, inclusive of 0, when we generate startX and startY to ensure that we do not land in the moat.
+ * - Both classes (Knighttour and TourFinder) are in the same file.
+ *** The following times are taken with delay() commented out. ***
  * Mean execution times for boards of size n*n:
- * n=5   __s    across __ executions
- * n=6   __s    across __ executions
- * n=7   __s    across __ executions
- * n=8   __s    across __ executions
+ * n=5   0.793s    across 3 executions
+ * n=6   1.142s    across 3 executions
+ * n=7   179.701s    across 3 executions
+ * n=8   631.674s    across 3 executions
  *
  * POSIX PROTIP: to measure execution time from BASH, use time program:
  * $ time java KnightTour 5
@@ -64,8 +74,8 @@ public class KnightTour
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //for random starting location, use lines below:
-    int startX = (int)(Math.random() * n);
-    int startY = (int)(Math.random() * n);
+    int startX = (int)(Math.random() * n) + 2;
+    int startY = (int)(Math.random() * n) + 2;
     //tf.findTour( startX, startY, 1 );   // 1 or 0 ? either is fine as long as it is kept consistent throughout, and the offset is taken into consideration
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -163,7 +173,7 @@ class TourFinder
    **/
   public void findTour( int x, int y, int moves )
   {
-    delay(50); //slow it down enough to be followable
+    //delay(50); //slow it down enough to be followable
 
     //if a tour has been completed, stop animation
     if ( moves == _sideLength * _sideLength ) System.exit(0);
@@ -187,7 +197,7 @@ class TourFinder
 
       System.out.println( this ); //refresh screen
 
-      delay(1000); //uncomment to slow down enough to view
+      //delay(1000); //uncomment to slow down enough to view
 
       /******************************************
        * Recursively try to "solve" (find a tour) from
