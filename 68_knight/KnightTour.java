@@ -65,17 +65,18 @@ public class KnightTour
     System.out.println( " [2J" );
 
     //display board
-    System.out.println( tf );
+    //System.out.println( tf );
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //for fixed starting location, use line below:
     tf.findTour( 2, 2, 1 );
+    System.out.println(tf);
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //for random starting location, use lines below:
-    int startX = (int)(Math.random() * n) + 2;
-    int startY = (int)(Math.random() * n) + 2;
+    //int startX = (int)(Math.random() * n) + 2;
+    //int startY = (int)(Math.random() * n) + 2;
     //tf.findTour( startX, startY, 1 );   // 1 or 0 ? either is fine as long as it is kept consistent throughout, and the offset is taken into consideration
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -83,9 +84,11 @@ public class KnightTour
     // PUSHING FARTHER...
     // Systematically attempt to solve from every position on the board?
     /*
-    for(int i = 2; i < n+2; i++){
-        for(int j = 2; j < n+2; j++){
+    System.out.println("test");
+    for(int i = 2; i < (n + 1)/2 + 2; i++){
+        for(int j = 2; j < (n + 1)/2 + 2; j++){
             tf.findTour( i, j, 1);
+	    System.out.println("for starting pos (" + i + ", " + j + "): " + tf.getSolved());
         }
     }
     */
@@ -149,6 +152,11 @@ class TourFinder
     return retStr;
   }
 
+  public boolean getSolved()
+  {
+    return _solved;
+  }
+
 
   /**
    * helper method to keep try/catch clutter out of main flow
@@ -176,12 +184,12 @@ class TourFinder
     //delay(50); //slow it down enough to be followable
 
     //if a tour has been completed, stop animation
-    if ( moves == _sideLength * _sideLength ) System.exit(0);
+    //if ( moves >=  _sideLength * _sideLength ) System.exit(0);
 
     //primary base case: tour completed
-    if ( moves == _sideLength * _sideLength ) {
+    if ( moves >=  _sideLength * _sideLength ) {
       _solved = true;
-      System.out.println( this ); //refresh screen
+      // System.out.println( this ); //refresh screen
       return;
     }
     //other base case: stepped off board or onto visited cell
@@ -195,7 +203,7 @@ class TourFinder
       //mark current cell with current move number
       _board[x][y] = moves;
 
-      System.out.println( this ); //refresh screen
+      //System.out.println( this ); //refresh screen
 
       //delay(1000); //uncomment to slow down enough to view
 
@@ -221,7 +229,7 @@ class TourFinder
       // (Overwrite number at this cell with a 0.)
       _board[x][y] = 0;
 
-      System.out.println( this ); //refresh screen
+      //System.out.println( this ); //refresh screen
     }
   }//end findTour()
 
