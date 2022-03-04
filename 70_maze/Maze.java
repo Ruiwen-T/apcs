@@ -36,7 +36,7 @@ import java.util.*;
 
 class MazeSolver
 {
-  final private int FRAME_DELAY = 50;
+  final private int FRAME_DELAY = 200;
 
   private char[][] _maze;
   private int h, w; // height, width of maze
@@ -123,7 +123,7 @@ class MazeSolver
     } catch( InterruptedException e ) {
       System.exit(0);
     }
-  }
+  }  
 
 
   /**
@@ -136,28 +136,58 @@ class MazeSolver
     delay( FRAME_DELAY ); //slow it down enough to be followable
 
     //primary base case
-    if ( ??? ) {
-	???
+    if ( _maze[x][y] == EXIT ) {
+    	_maze[x][y] = HERO;
+	_solved = true;
+	System.out.println( this );
+	System.exit(0);
     }
     //other base cases
-    else if ( ??? ) {
-	???
+    else if ( (_maze[x-1][y] == HERO || _maze[x-1][y] == WALL || _maze[x-1][y] == VISITED_PATH) 
+    		&& (_maze[x+1][y] == HERO || _maze[x+1][y] == WALL || _maze[x+1][y] == VISITED_PATH)
+    		&& (_maze[x][y-1] == HERO || _maze[x][y-1] == WALL || _maze[x][y-1] == VISITED_PATH)
+    		&& (_maze[x][y+1] == HERO || _maze[x][y+1] == WALL || _maze[x][y+1] == VISITED_PATH)) { 
+	_maze[x][y] = VISITED_PATH;
+	System.out.println( this );
+	if(_maze[x-1][y] == HERO){
+		solve(x-1, y);
+	}
+	if(_maze[x][y+1] == HERO){
+		solve(x, y+1);
+	}
+	if(_maze[x+1][y] == HERO){
+		solve(x+1, y);
+	}
+	if(_maze[x][y-1] == HERO){
+		solve(x, y-1);
+	}
       return;
     }
     //otherwise, recursively solve maze from next pos over,
     //after marking current location
     else {
-	???
+	_maze[x][y] = HERO;
       System.out.println( this ); //refresh screen
 
-???
+	if(_maze[x][y-1] == PATH || _maze[x][y-1] == EXIT){
+		solve(x, y-1);
+	}
+	if(_maze[x+1][y] == PATH || _maze[x+1][y] == EXIT){
+		solve(x+1, y);
+	}
+	if(_maze[x][y+1] == PATH || _maze[x][y+1] == EXIT){
+		solve(x, y+1);
+	}
+	if(_maze[x-1][y] == PATH || _maze[x-1][y] == EXIT){
+		solve(x-1, y);
+	}
       System.out.println( this ); //refresh screen
     }
   }
 
   //accessor method to help with randomized drop-in location
   public boolean onPath( int x, int y) {
-      
+      return (_maze[x][y] == PATH || _maze[x][y] == EXIT);
   }
 
 }//end class MazeSolver
@@ -188,7 +218,7 @@ public class Maze
 
     //drop hero into the maze (coords must be on path)
     // ThinkerTODO: comment next line out when ready to randomize startpos
-    ms.solve( 4, 3 );
+    ms.solve( 1, 1 );
 
     //drop our hero into maze at random location on path
     // YOUR RANDOM-POSITION-GENERATOR CODE HERE
