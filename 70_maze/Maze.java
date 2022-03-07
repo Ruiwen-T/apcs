@@ -16,16 +16,20 @@
 *
 * ALGORITHM for finding exit from starting position:
 *
-* 1) Check if your current position is an exit, a valid path, or another feature. 
+* 1) Check if your current position is an exit, a valid path, or another feature.
 * 2a) If it is an exit, mark it as hero, and you’re done. End the program.
-* 2b) If it is a valid path, mark it as hero. Starting from the top neighbor and progressing in the clockwise direction, repeat this algorithm from step 1. 
+* 2b) If it is a valid path, mark it as hero. Starting from the top neighbor and progressing in the clockwise direction, repeat this algorithm from step 1.
 * 2c) If the current position is another feature, it  does not lead to a solution. End this possibility.
 * 3) If you’ve reached this step, meaning none of the attempts in 2b resulted in a valid path, mark the current position as visited.
-* 
+*
 * DISCO
-*
+* Multiple classes can be in one file. Here, we have MazeSolver and Maze in the same file, and the file is named Maze.java. This organization makes sense because we would like to compile and execute Maze, as it is the class which contains the main method of interest.
+* The algorithm for solving the maze is very similar to a knight tour, in that we call the solve method for all the neighbors without first checking if those neighbors are valid paths. This property will be checked within the next method.
+* We don’t have to explicitly check if positions are WALL or VISITED_PATH. These both fall into the “other” category in that we simply recognize that the attempted path is a failed possibility if we run into either of these.
 * QCC
-*
+* What if we put the random start into the solver, so as to bypass needing an accessor to acces h and w of the maze?
+* Is there another way to do this without the need of accessors for the random start?
+* Should we put a "default maze" like the default 8x8 board in the knight's tour? 
 ***/
 
 //enable file I/O
@@ -122,7 +126,7 @@ class MazeSolver
     } catch( InterruptedException e ) {
       System.exit(0);
     }
-  }  
+  }
 
 
   /**
@@ -176,6 +180,13 @@ public boolean onPath( int x, int y) {
   return (_maze[x][y] == PATH || _maze[x][y] == EXIT);
 }
 
+public int retw(){
+  return w;
+}
+public int reth(){
+  return h;
+}
+
 }//end class MazeSolver
 
 
@@ -204,18 +215,18 @@ public class Maze
 
     //drop hero into the maze (coords must be on path)
     // ThinkerTODO: comment next line out when ready to randomize startpos
-    
-    ms.solve( 1, 1 );
+
+    //ms.solve( 1, 1 );
 
     //drop our hero into maze at random location on path
     // YOUR RANDOM-POSITION-GENERATOR CODE HERE
-    int startX = (int)(Math.random()*ms.w);
-    int startY = (int)(Math.random()*ms.h);
-    while(onPath(startX, startY) == false){
-      startX = (int)(Math.random()*ms.w);
-      startY = (int)(Math.random()*);
+    int startX = (int)(Math.random()*ms.retw());
+    int startY = (int)(Math.random()*ms.reth());
+    while(ms.onPath(startX, startY) == false){
+      startX = (int)(Math.random()*ms.retw());
+      startY = (int)(Math.random()*ms.reth());
     }
-    //ms.solve( startX, startY );
+    ms.solve( startX, startY );
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   }//end main()
