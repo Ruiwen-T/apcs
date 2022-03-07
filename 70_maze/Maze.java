@@ -122,7 +122,7 @@ class MazeSolver
     } catch( InterruptedException e ) {
       System.exit(0);
     }
-  }
+  }  
 
 
   /**
