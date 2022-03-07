@@ -5,29 +5,28 @@
 // time spent: 00.5 hrs
 
 /***
- * SKEELTON for
- * class MazeSolver
- * Implements a blind depth-first exit-finding algorithm.
- * Displays probing in terminal.
- * 
- * USAGE: 
- * $ java Maze [path/to/mazefile]
- * (mazefile is ASCII representation of a maze, using symbols below)
- *
- * ALGORITHM for finding exit from starting position:
- *  
- * 1) Evaluate your neighbors. Identify those that have not been visited and that are not barriers. Out of these available positions, take the first available option going clockwise from the top.
- * 2) Mark your new position as visited once.
- * 3) Repeat steps 1-2 for as long as there are available positions or until you solve the maze.
- *  a) If you have reached the end of the maze, you’re done!
- *  b) If there are no more available positions (dead end), mark your current square as backtracked (visited twice). Take the first available option going counter-clockwise from the left. Repeat this substep until you’ve reached a square with at least one unvisited and non-barrier adjacent square. Repeat steps 1-3 from this square. 
- * If all possibilities have been exhausted, the maze is impossible to solve.
- *
- * DISCO
- * 
- * QCC
- * 
- ***/
+* SKEELTON for
+* class MazeSolver
+* Implements a blind depth-first exit-finding algorithm.
+* Displays probing in terminal.
+*
+* USAGE:
+* $ java Maze [path/to/mazefile]
+* (mazefile is ASCII representation of a maze, using symbols below)
+*
+* ALGORITHM for finding exit from starting position:
+*
+* 1) Check if your current position is an exit, a valid path, or another feature. 
+* 2a) If it is an exit, mark it as hero, and you’re done. End the program.
+* 2b) If it is a valid path, mark it as hero. Starting from the top neighbor and progressing in the clockwise direction, repeat this algorithm from step 1. 
+* 2c) If the current position is another feature, it  does not lead to a solution. End this possibility.
+* 3) If you’ve reached this step, meaning none of the attempts in 2b resulted in a valid path, mark the current position as visited.
+* 
+* DISCO
+*
+* QCC
+*
+***/
 
 //enable file I/O
 import java.io.*;
@@ -36,7 +35,7 @@ import java.util.*;
 
 class MazeSolver
 {
-  final private int FRAME_DELAY = 50;
+  final private int FRAME_DELAY = 100;
 
   private char[][] _maze;
   private int h, w; // height, width of maze
@@ -71,17 +70,17 @@ class MazeSolver
         String line = sc.nextLine();
 
         if ( w < line.length() )
-          w = line.length();
+        w = line.length();
 
         for( int i=0; i<line.length(); i++ )
-          _maze[i][row] = line.charAt( i );
+        _maze[i][row] = line.charAt( i );
 
         h++;
         row++;
       }
 
       for( int i=0; i<w; i++ )
-        _maze[i][row] = WALL;
+      _maze[i][row] = WALL;
       h++;
       row++;
 
@@ -93,8 +92,8 @@ class MazeSolver
 
 
   /**
-   * "stringify" the board
-   **/
+  * "stringify" the board
+  **/
   public String toString()
   {
     //send ANSI code "ESC[0;0H" to place cursor in upper left
@@ -105,7 +104,7 @@ class MazeSolver
     int i, j;
     for( i=0; i<h; i++ ) {
       for( j=0; j<w; j++ )
-        retStr = retStr + _maze[j][i];
+      retStr = retStr + _maze[j][i];
       retStr = retStr + "\n";
     }
     return retStr;
@@ -113,9 +112,9 @@ class MazeSolver
 
 
   /**
-   * helper method to keep try/catch clutter out of main flow
-   * @param n      delay in ms
-   **/
+  * helper method to keep try/catch clutter out of main flow
+  * @param n      delay in ms
+  **/
   private void delay( int n )
   {
     try {
@@ -127,38 +126,55 @@ class MazeSolver
 
 
   /**
-   * void solve(int x,int y) -- recursively finds maze exit (depth-first)
-   * @param x starting x-coord, measured from left
-   * @param y starting y-coord, measured from top
-   **/
+  * void solve(int x,int y) -- recursively finds maze exit (depth-first)
+  * @param x starting x-coord, measured from left
+  * @param y starting y-coord, measured from top
+  **/
   public void solve( int x, int y )
   {
     delay( FRAME_DELAY ); //slow it down enough to be followable
 
     //primary base case
-    if ( ??? ) {
-	???
+    if ( _maze[x][y] == EXIT ) {
+      _maze[x][y] = HERO;
+      System.out.println( this );
+      _solved = true;
+
+      System.exit(0);
+
     }
     //other base cases
-    else if ( ??? ) {
-	???
-      return;
-    }
-    //otherwise, recursively solve maze from next pos over,
-    //after marking current location
-    else {
-	???
-      System.out.println( this ); //refresh screen
+    else if ( _maze[x][y] == PATH) {
+      _maze[x][y] = HERO;
+      solve(x, y-1);
+      solve(x+1, y);
+      solve(x, y+1);
+      solve(x-1, y);
+      if(_maze[x][y] == HERO){
+        _maze[x][y] = VISITED_PATH;
+      }
 
-???
-      System.out.println( this ); //refresh screen
     }
-  }
 
-  //accessor method to help with randomized drop-in location
-  public boolean onPath( int x, int y) {
-      
+  //otherwise, recursively solve maze from next pos over,
+  //after marking current location
+  else {
+
+    System.out.println( this ); //refresh screen
+    return;
   }
+}
+
+//accessor method to help with randomized drop-in location
+public boolean onPath( int x, int y) {
+  if(x > w){
+    return false;
+  }
+  if(y > h){
+    return false;
+  }
+  return (_maze[x][y] == PATH || _maze[x][y] == EXIT);
+}
 
 }//end class MazeSolver
 
@@ -188,13 +204,20 @@ public class Maze
 
     //drop hero into the maze (coords must be on path)
     // ThinkerTODO: comment next line out when ready to randomize startpos
-    ms.solve( 4, 3 );
+    
+    ms.solve( 1, 1 );
 
     //drop our hero into maze at random location on path
     // YOUR RANDOM-POSITION-GENERATOR CODE HERE
+    int startX = (int)(Math.random()*ms.w);
+    int startY = (int)(Math.random()*ms.h);
+    while(onPath(startX, startY) == false){
+      startX = (int)(Math.random()*ms.w);
+      startY = (int)(Math.random()*);
+    }
     //ms.solve( startX, startY );
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   }//end main()
 
 }//end class Maze
