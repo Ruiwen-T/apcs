@@ -1,0 +1,48 @@
+// Avocado: Raven (Ruiwen) Tang {in-class collaboration with May Qiu, Jeffery Tang}
+// APCS pd06
+// HW71 -- Reading for intent, tracing for VICTORY / observing and hypothesizing purpose of mystery method
+// 2022-03-07
+// time spent:  hrs
+
+/***
+ * SKEELTON for
+ * class Mysterion
+ * tests preliminary hypotheses re: utility of mystery algo
+ * 
+ * <h1>It's a Bird, It's a Plane! It's.... MYSTERION</h1>
+ * The Mysterion method ... rearranges the elements from index a to b so that the values from index a to c are the smallest values in the range, and the values from c to b are the largest values in the range.
+ * <p>
+ * <b>Note:</b> BLAH blah blah, yakkety schmakketty...
+ * @author  Trey Parker, Matt Stone
+ * @version 3.1415926535897932384626433
+ * @since   2022-03-07m 
+ *
+ * algo as pseudocode:
+ * ------------------------------
+ *     v = arr[c]
+ *     swap arr[c], arr[b]  
+ *     s = a
+ *     for i in [a..b-1]
+ *         if arr[i] < v
+ *             swap arr[s], arr[i]
+ *             s+=1
+ *     swap arr[b], arr[s] 
+ * 
+ * DISCO
+ * Storing a value in a temporary variable is the key to swapping. 
+ * a should be less than b if we would like to make a number of swaps based on comparisons, as the for loop iterates from index a to b-1.
+ * Running mysterion with each c from a to b will sort the array in that interval.
+ * 
+ * QCC
+ * Is s or c a reasonable value to return in mysterion()? s records a + the number of swaps made, and c records the original index of interest.
+ * a, b, and c must be within the valid indices of the array. 
+ * If a > c > b, the value at position a is flipped to b, the value at position b is flipped to c, and the value at position c is flipped to a.
+ * If a > b > c, the value at position a is flipped to b, the value at position b is flipped to c, and the value at position c is flipped to a.
+ * 
+ * q0: What does it do?
+ * a0: The method rearranges the elements from index a to b so that the values from index a to c are the smallest values in the range, and the values from c to b are the largest values in the range.
+ * 
+ * q1: O(?)
+ * a1: O(n), because it iterates through the elements from index a to c once.
+ * 
+ ***/
