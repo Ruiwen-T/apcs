@@ -16,10 +16,10 @@ time spent: 01.0 hrs
  * 
  * Execution time in Big-Oh: O(n*logn). Each time partition is run, it takes linear time. Partition is run up to log base 2 of n times because the possible window for the _y_th element is halved each time the method is called. Multiply, and get O(n*logn).
  BEST CASE SCENARIO
- * The _y_th smallest element is in the exact middle of the array, as the method will only call partition() once.
+ * The _y_th smallest element is in the exact middle of the array, as the method will only call partition() once. This case will take O(n), based on the runtime of partition().
  * 
  WORST CASE SCENARIO
- * The _y_th smallest element requires log(n) splits to reach, as this requires the window to be reduced log(n) times and the partition to be called log(n) times.
+ * The _y_th smallest element requires log(n) splits to reach, as this requires the window to be reduced log(n) times and the partition to be called log(n) times. This case will take O(n*logn), as it runs an O(n) process log(n) times.
  * 
  DISCO
  * partition() returns the new index of the element originally at c.
