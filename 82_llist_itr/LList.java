@@ -47,8 +47,7 @@ public class LList<T> implements List<T> //Q: Why no "implements Iterable" ? //L
     else if ( index == size() )
       addLast( newVal );
 
-    DLLNode<T> newNode = new DLLNode<T>();
-    newNode.setCargo(newVal);
+    DLLNode<T> newNode = new DLLNode(newVal, null, null);
 
     //if index==0, insert node before head node
     if ( index == 0 )
@@ -170,10 +169,7 @@ public class LList<T> implements List<T> //Q: Why no "implements Iterable" ? //L
   public void addFirst( T newFirstVal )
   {
     //insert new node before first node (prev=null, next=_head)
-    DLLNode<T> store = _head;
-    _head = new DLLNode<T>();
-    _head.setCargo(newFirstVal);
-    _head.setNext(store);
+    _head = new DLLNode<T>(newFirstVal, null, _head);
 
     if ( _size == 0 )
       _tail = _head;
@@ -186,10 +182,7 @@ public class LList<T> implements List<T> //Q: Why no "implements Iterable" ? //L
   public void addLast( T newLastVal )
   {
     //insert new node before first node (prev=_last, next=null)
-    DLLNode<T> store = _tail;
-    _tail = new DLLNode<T>();
-    _tail.setCargo(newLastVal);
-    _tail.setPrev(store);
+    _tail = new DLLNode(newLastVal, _tail, null);
 
     if ( _size == 0 )
       _head = _tail;
