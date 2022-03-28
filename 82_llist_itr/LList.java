@@ -155,7 +155,7 @@ public class LList<T> implements List<T> //Q: Why no "implements Iterable" ? //L
   public Iterator<T> iterator() /* YOUR CODE HERE */
   {
     /* YOUR CODE HERE */
-    Iterator<T> rtr = new MyIterator<T>();
+    Iterator<T> rtr = new MyIterator();
     return rtr;
   }
 
@@ -249,7 +249,7 @@ public class LList<T> implements List<T> //Q: Why no "implements Iterable" ? //L
    * Uses dummy node to facilitate iterability over LList.
    **/
 
-  private class MyIterator<T> implements Iterator<T>
+  private class MyIterator implements Iterator<T>
   {
     private DLLNode<T> _dummy;   // dummy node to tracking pos
     private boolean _okToRemove; // flag indicates next() was called
@@ -266,7 +266,7 @@ public class LList<T> implements List<T> //Q: Why no "implements Iterable" ? //L
     //return true if iteration has more elements.
     public boolean hasNext()
     {
-      if(_dummy.getNext().equals(null)) return false;
+      if(_dummy.getNext() == null) return false;
       return true;
     }
 
@@ -276,14 +276,15 @@ public class LList<T> implements List<T> //Q: Why no "implements Iterable" ? //L
     {
       if(this.hasNext()){
       _okToRemove = true;
-      return _dummy.getNext().getCargo();
+      _dummy = _dummy.getNext();
+      return _dummy.getCargo();
     }
       _okToRemove = false;
       throw new NoSuchElementException();
     }
 
 
-    //return last element returned by this iterator (from last next() call)
+    //remove last element returned by this iterator (from last next() call)
     //postcondition: maintains invariant that _dummy always points to a node
     //               (...so that hasNext() will not crash)
     public void remove()
@@ -299,7 +300,9 @@ public class LList<T> implements List<T> //Q: Why no "implements Iterable" ? //L
           }
           _okToRemove = false;
         }
-        throw new IllegalStateException();
+        else{
+          throw new IllegalStateException();
+        }
     }
     //--------------^  Iterator interface methods  ^-------------
     //-----------------------------------------------------------
