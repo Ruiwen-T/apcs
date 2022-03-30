@@ -3,7 +3,7 @@ Mr. K: May Qiu, Raven (Ruiwen) Tang, Kaitlin Ho
 APCS pd6
 HW84: Stack: What Is It Good For? / using Stack to flip string, match parens
 2022-03-29
-time spent: <elapsed time in hours, rounded to nearest tenth>
+time spent: 00.5 hrs
 */
 /**
  * DISCO
