@@ -1,3 +1,4 @@
+import core.data.*;
 /*
  Represents information about a NWS weather station
 */
@@ -26,10 +27,21 @@ public class WeatherStation {
    public String getName() { 
       return name;
    }
+
+   /* Produce the latitude of this station */
+   public double getLat(){
+      return lat;
+   }
    
    /* Determine if this weather station is located in the given state */
    public boolean isLocatedInState(String st) {
       return this.state.equals(st);
+   }
+
+   /* Connects to a DataSource */
+   public Observation currentWeather(){
+      DataSource ds = DataSource.connect("http://weather.gov/xml/current_obs/" + id + ".xml");
+      return ds.fetch("Observation", "weather", "temp_f", "wind_degrees");
    }
    
 }
