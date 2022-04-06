@@ -68,3 +68,9 @@ Activity 3
 4. 48 stations
 
 5. You could also filter by region (tri-state, South, etc.).
+
+6. Still in process of resolving encountered compile time error
+
+7. What is the northernmost weather station?
+
+8. Flipping the comparison of latitutdes
