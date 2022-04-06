@@ -24,8 +24,8 @@ QCC
 Exception in thread "main" core.data.DataSourceException: no data available: http://weather.gov/xml/current_obs/KALB.xml --- make sure you called .load() (ds:no-data)
 * We noticed that the tutorial implemented several classes in the same file. How would nesting these same-file classes impact their functionality?
 
-<TNPG>'s CSV FLOW:
-<insert your description of your tools and workflow in creating, editing CSV files>
+Elmo's CSV FLOW:
+went on kaggle website to retrieve dataset and downloaded the csv file to use in activity 4
 
 
 TRUBZ
