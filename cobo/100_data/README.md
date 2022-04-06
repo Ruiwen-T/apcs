@@ -32,6 +32,29 @@ Activity 1
 
 11. Perhaps there are situations where the benefit provided is worth the risk to personal privacy, if a user is really interested in getting to know more about themselves and receive recommendations. A user may also feel that the information they are providing is not particularly valuable to them. 
 
+Activity 2
+
+1. cereal brand
+
+2. How many calories does each cereal brand contain?
+
+3. public class Cereal
+
+4. 2
+
+5. String brandName 
+    int calorieCnt
+
+6. see Cereal.java
+
+7. see Cereal.java
+
+8. Which cereal brand has more calories?
+
+9. Which cereal brand has the most protein?
+
+10. create an accessor method and instance variable for protein
+
 Activity 3
 
 1. The temperature at Atlanta, Hartsfield - Jackson Atlanta International Airport, GA is 62.0F
