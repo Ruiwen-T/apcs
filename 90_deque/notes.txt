@@ -16,3 +16,4 @@ QCC
     1) contains(), removeFirstOccurrence(), etc.; these methods deal with looking for certain values in the Deque
     2) Iterator methods
     3) Stack methods, where the deque is treated as a stack
+* API references head/tail but also uses language like front/end. Is this difference intentional/communicating an actual difference?  

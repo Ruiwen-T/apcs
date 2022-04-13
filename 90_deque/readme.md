@@ -21,3 +21,5 @@ time spent: 1.0 hr
 7) dequeueBack()  
     ...because we want to remove items after enqueueing them. This method is one step away from dequeueing at the front, which we already know for a Queue.
 8) extra: contains(), removeFirstOccurrence(), Iterator methods, Stack methods, etc.
+
+ //how does size capacity apply here? API says method should return IllegalStateException if capacity restrictions violated
