@@ -7,6 +7,7 @@ time spent: 1.0 hr
 */
 
 import java.util.LinkedList;
+import java.util.Iterator;
 
 public class MrKDeque<D> implements Deque<D>{
     private LinkedList<D> _baaha;
@@ -43,6 +44,10 @@ public class MrKDeque<D> implements Deque<D>{
     public boolean offerFirst(D x){
     	addFirst(x);
     	return true;
+    }
+
+    public void push(D x){
+        addFirst(x);
     }
     
     public D peekFirst(){
@@ -81,7 +86,44 @@ public class MrKDeque<D> implements Deque<D>{
     	return removeFirst();
     }
 
+    public boolean remove(){
+        removeFirst();
+        return true;
+    }
+
+    public D pop(){
+        return removeFirst();
+    }
+
     public D removeLast(){
         return _baaha.removeLast();
+    }
+
+    public D pollLast(){
+        return _baaha.removeLast();
+    }
+
+    public boolean contains(D x){
+        return _baaha.contains(x);
+    }
+
+    public boolean remove(D x){
+        return _baaha.remove(x);
+    }
+
+    public boolean removeFirstOccurrence(D x){
+        return remove(x);
+    }
+
+    public boolean removeLastOccurrence(D x){
+        return _baaha.removeLastOccurrence(x);
+    }
+
+    public Iterator<D> iterator(){
+        return _baaha.iterator();
+    }
+
+    public Iterator<D> descendingIterator(){
+        return _baaha.descendingIterator();
     }
 }
