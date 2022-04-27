@@ -1,7 +1,7 @@
 Big Bird:
 
 ## Task List:
-* ~~Activity 1~~ 
+* ~~Activity 1~~
   * ~~Brainstorming which classes might be used for Celebrity game~~
   * ~~Listing possible info included in Game class~~
   * ~~Listing possible behaviors for Game class~~
@@ -46,7 +46,7 @@ Big Bird:
   * Testing Celebrity subclass
   * Updating processGuess method
   * Modifying addCelebrity method
-
+* Activity 5 (if time allows, but probably not)
 
 
 ## Q
