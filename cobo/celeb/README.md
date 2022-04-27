@@ -35,7 +35,17 @@ Big Bird:
   * Executing CelebrityRunner and checking for GUI window
   * Explaining what knowledge the GUI (other than CelebrityRunner) has about Celebrity class
 * Activity 4
-  * 
+  * Brainstorming new type of celebrity that is separate from "default" celebrity
+  * Viewing LiteratureCelebrity class
+  * Creating Java file for Celebrity subclass
+  * Defining instance variables for Celebrity subclass
+  * Writing constructor for Celebrity subclass
+  * Overriding getClue and/or getAnswer methods
+  * Overriding toString method
+  * Writing additional methods that were designed
+  * Testing Celebrity subclass
+  * Updating processGuess method
+  * Modifying addCelebrity method
 
 
 
