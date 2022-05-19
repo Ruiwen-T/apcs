@@ -1,0 +1,13 @@
+// Big Bird :: Raven (Ruiwen) Tang, Jun Hong Wang, Michael Kamela
+// APCS pd6
+// HW103 -- Erica's Friends, Hugo, and The One in the Middle
+// 2022-05-17w
+// time spent: 1.0 hrs
+
+If bigVals is empty, we add to lilVals.
+Otherwise, we compare the value of the new value to the roots of the two heaps.
+If it's smaller than the root of the maxheap, we add it there.
+Otherwise, we add to the minheap.
+After everything, we balance the heaps.
+Our balance method doesn't do anything if the difference isn's greater than or equal to 2.
+However, if it is, it will remove the root of one heap and add it to the other heap.
